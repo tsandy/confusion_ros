@@ -1,0 +1,3 @@
+[submodule "confusion"]
+	path = confusion
+	url = https://tsandy@bitbucket.org/tsandy/confusion.git
