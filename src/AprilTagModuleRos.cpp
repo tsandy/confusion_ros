@@ -31,7 +31,7 @@ AprilTagModuleRos::AprilTagModuleRos(
   pubTagMarkers_ =
       node_.advertise<visualization_msgs::MarkerArray>("/tag_markers", 10);
   tagImagePub_ = imageTransport_.advertise("/detector_image", 1);
-  pubTagArray_ = node_.advertise<confusion::TagArray>("/tags_detected", 10);
+  pubTagArray_ = node_.advertise<confusion_ros::TagArray>("/tags_detected", 10);
 
   // Start listening for the camera info message
   subCameraCalibration_ =
@@ -62,7 +62,7 @@ void AprilTagModuleRos::camCalCallback(
   // Start listening for camera measurements
   subImage_ = imageTransport_.subscribe(
       cameraTopic_, 2, &AprilTagModuleRos::imageMsgCallback, this);
-  subTagArray_ = node_.subscribe<confusion::TagArray>(
+  subTagArray_ = node_.subscribe<confusion_ros::TagArray>(
       tagArrayTopic_, 2, &AprilTagModuleRos::tagArrayCallback, this,
       ros::TransportHints().tcpNoDelay());
 
@@ -78,7 +78,7 @@ void AprilTagModuleRos::camCalCallback(
 }
 
 void AprilTagModuleRos::tagArrayCallback(
-    const confusion::TagArray::ConstPtr& msg) {
+    const confusion_ros::TagArray::ConstPtr& msg) {
   if (!msg->tags.empty()) {
     std::vector<TagDetection> tagDetections;
     for (const auto& tagMsg : msg->tags) {

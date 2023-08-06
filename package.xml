@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>confusion</name>
+  <name>confusion_ros</name>
   <version>0.0.0</version>
-  <description>The confusion package</description>
+  <description>The confusion_ros package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->

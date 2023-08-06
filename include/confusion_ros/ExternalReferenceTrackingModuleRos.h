@@ -17,8 +17,8 @@
 #ifndef INCLUDE_CONFUSION_ERTMODULEROS_H_
 #define INCLUDE_CONFUSION_ERTMODULEROS_H_
 
-#include <confusion/OdomWithState.h>
-#include <confusion/TagArray.h>
+#include <confusion_ros/OdomWithState.h>
+#include <confusion_ros/TagArray.h>
 #include <confusion/modules/external_reference_tracking/ExternalReferenceTrackingModule.h>
 #include <cv_bridge/cv_bridge.h>
 #include <geometry_msgs/PoseArray.h>
@@ -35,7 +35,7 @@
 #include <tf/transform_broadcaster.h>
 #include <visualization_msgs/MarkerArray.h>
 
-#include "confusion/modules/external_reference_tracking/ert_utilities.h"
+#include "confusion_ros/ert_ros_utilities.h"
 #include "confusion_ros/ros_conversions.h"
 
 namespace confusion {

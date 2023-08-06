@@ -28,7 +28,7 @@
 #include <sensor_msgs/Image.h>
 #include <sensor_msgs/image_encodings.h>
 #include <visualization_msgs/MarkerArray.h>
-#include <confusion/TagArray.h>
+#include <confusion_ros/TagArray.h>
 #include <tf/transform_broadcaster.h>
 
 #include "confusion_ros/ros_conversions.h"
@@ -46,7 +46,7 @@ class AprilTagModuleRos : public AprilTagModule {
 
   void camCalCallback(const sensor_msgs::CameraInfo::ConstPtr &msg);
 
-  void tagArrayCallback(const confusion::TagArray::ConstPtr &msg);
+  void tagArrayCallback(const confusion_ros::TagArray::ConstPtr &msg);
 
   void imageMsgCallback(const sensor_msgs::ImageConstPtr &msg);
 
