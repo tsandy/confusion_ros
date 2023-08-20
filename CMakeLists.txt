@@ -9,11 +9,11 @@ include_directories(
   include
   confusion/include
   confusion/example
+  test
 )
 
 MESSAGE(STATUS "Building ConFusion for ROS.")
 
-# If catkin is found, but these packages are not, the build should fail
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rosbag
@@ -52,10 +52,6 @@ catkin_package(
   DEPENDS CERES OpenCV
 )
 
-
-# set(external_libraries ${catkin_LIBRARIES} ${CERES_LIBRARIES} ${OpenCV_LIBRARIES})
-
-
 add_library(ExternalReferenceTrackingModuleRos 
   src/external_reference_tracking_module_ros.cpp
   src/ros_conversions.cpp)
@@ -74,44 +70,36 @@ add_executable(tag_tracker_node
   src/ros_conversions.cpp)
 target_link_libraries(tag_tracker_node confusion ${catkin_LIBRARIES} ${CERES_LIBRARIES} ${OpenCV_LIBRARIES})
 
-# install(DIRECTORY include/confusion/ example/confusion_example/
-#   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-#   )
+catkin_add_gtest(parameterization_test 
+        confusion/test/parameterization_test.cpp
+        confusion/test/local_parameterization_test_fixture.cpp)
+target_link_libraries(parameterization_test confusion ${external_libraries})
 
-# install(TARGETS ${ConFusion_LIBRARIES}
-#   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-#   )
+catkin_add_gtest(measurementManagerTest confusion/test/MeasurementManagerTest.cpp)
+target_link_libraries(measurementManagerTest confusion ${external_libraries})
 
-# catkin_add_gtest(parameterization_test test/parameterization_test.cpp
-#         test/local_parameterization_test_fixture.cpp)
-# target_link_libraries(parameterization_test confusion ${external_libraries})
+catkin_add_gtest(ImuChainTest confusion/test/ImuChainTest.cpp)
+target_link_libraries(ImuChainTest confusion ${external_libraries})
 
-# catkin_add_gtest(measurementManagerTest test/MeasurementManagerTest.cpp)
-# target_link_libraries(measurementManagerTest confusion ${external_libraries})
+catkin_add_gtest(PriorCostTest confusion/test/PriorCostTest.cpp)
+target_link_libraries(PriorCostTest confusion ${external_libraries})
 
-# catkin_add_gtest(ImuChainTest test/ImuChainTest.cpp)
-# target_link_libraries(ImuChainTest confusion ${external_libraries})
+catkin_add_gtest(marginalizationTest confusion/test/marginalizationTest.cpp)
+target_link_libraries(marginalizationTest confusion ${external_libraries})
 
-# catkin_add_gtest(ConFusorTest test/ConFusorTest.cpp)
-# target_link_libraries(ConFusorTest confusion ${external_libraries})
-# add_dependencies(ConFusorTest confusion_generate_messages_cpp ${confusion_EXPORTED_TARGETS})
+catkin_add_gtest(distancesTest confusion/test/distancesTest.cpp)
+target_link_libraries(distancesTest ${external_libraries})
 
-# catkin_add_gtest(PriorCostTest test/PriorCostTest.cpp)
-# target_link_libraries(PriorCostTest confusion ${external_libraries})
+catkin_add_gtest(rotationUtilsTest confusion/test/RotationUtilsTest.cpp)
+target_link_libraries(rotationUtilsTest ${external_libraries})
 
-# catkin_add_gtest(marginalizationTest test/marginalizationTest.cpp)
-# target_link_libraries(marginalizationTest confusion ${external_libraries})
+catkin_add_gtest(static_parameter_random_walk_process_tester 
+        confusion/test/static_parameter_random_walk_process_tester.cpp)
+target_link_libraries(static_parameter_random_walk_process_tester confusion ${external_libraries})
 
-# catkin_add_gtest(distancesTest test/distancesTest.cpp)
-# target_link_libraries(distancesTest ${external_libraries})
-
-# catkin_add_gtest(rotationUtilsTest test/RotationUtilsTest.cpp)
-# target_link_libraries(rotationUtilsTest ${external_libraries})
-
-# catkin_add_gtest(static_parameter_random_walk_process_tester test/static_parameter_random_walk_process_tester.cpp)
-# target_link_libraries(static_parameter_random_walk_process_tester confusion ${external_libraries})
+catkin_add_gtest(tag_tracker_test test/tag_tracker_test.cpp)
+target_link_libraries(tag_tracker_test confusion ${catkin_LIBRARIES} ${external_libraries})
+# add_dependencies(tag_tracker_test confusion_generate_messages_cpp ${confusion_EXPORTED_TARGETS})
 
 
 
