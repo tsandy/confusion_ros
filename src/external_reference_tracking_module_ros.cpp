@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "confusion_ros/ExternalReferenceTrackingModuleRos.h"
+#include "confusion_ros/external_reference_tracking_module_ros.h"
 
 namespace confusion {
 

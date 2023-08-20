@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "confusion_ros/AprilTagModuleRos.h"
+#include "confusion_ros/apriltag_module_ros.h"
 
 namespace confusion {
 

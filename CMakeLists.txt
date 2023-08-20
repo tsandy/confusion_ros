@@ -57,20 +57,20 @@ catkin_package(
 
 
 add_library(ExternalReferenceTrackingModuleRos 
-  src/ExternalReferenceTrackingModuleRos.cpp
+  src/external_reference_tracking_module_ros.cpp
   src/ros_conversions.cpp)
 add_dependencies(ExternalReferenceTrackingModuleRos
   confusion_ros_generate_messages_cpp
   ${confusion_EXPORTED_TARGETS})
 
 add_executable(visualize_pose 
-  src/visualizePose.cpp
+  src/visualize_pose.cpp
   src/ros_conversions.cpp)
 target_link_libraries(visualize_pose confusion ${catkin_LIBRARIES})
 
 add_executable(tag_tracker_node 
   src/tag_tracker_node.cpp
-  src/AprilTagModuleRos.cpp
+  src/apriltag_module_ros.cpp
   src/ros_conversions.cpp)
 target_link_libraries(tag_tracker_node confusion ${catkin_LIBRARIES} ${CERES_LIBRARIES} ${OpenCV_LIBRARIES})
 

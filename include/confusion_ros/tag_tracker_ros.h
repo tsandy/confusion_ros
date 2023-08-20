@@ -47,7 +47,7 @@
 
 #include "confusion/Diagram.h"
 #include "confusion/models/PoseMeas.h"
-#include "confusion_ros/AprilTagModuleRos.h"
+#include "confusion_ros/apriltag_module_ros.h"
 #include "confusion/utilities/ImuPropagator.h"
 #include "confusion_ros/ros_conversions.h"
 #include "confusion_example/TagTrackerParameters.h"
@@ -138,6 +138,6 @@ class TagTrackerRos {
 
 }  // namespace confusion
 
-#include "impl/TagTrackerRos.h"
+#include "impl/tag_tracker_ros.h"
 
 #endif /* INCLUDE_CONFUSION_EXAMPLES_TAGTRACKER_H_ */

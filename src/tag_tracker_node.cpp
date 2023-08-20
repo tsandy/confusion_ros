@@ -3,7 +3,7 @@
 //
 
 #include "confusion_example/ImuState.h"
-#include "confusion_ros/TagTrackerRos.h"
+#include "confusion_ros/tag_tracker_ros.h"
 
 int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
