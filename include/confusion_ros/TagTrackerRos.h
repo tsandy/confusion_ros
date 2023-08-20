@@ -138,6 +138,6 @@ class TagTrackerRos {
 
 }  // namespace confusion
 
-#include "confusion_example/impl/TagTrackerRos.h"
+#include "impl/TagTrackerRos.h"
 
 #endif /* INCLUDE_CONFUSION_EXAMPLES_TAGTRACKER_H_ */
